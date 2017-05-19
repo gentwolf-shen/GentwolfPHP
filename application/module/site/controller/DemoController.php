@@ -13,7 +13,7 @@ use gentwolf\Controller;
 
 class DemoController extends Controller {
 	public function init() {
-
+		return false;
 	}
 
 	public function defaultAction() {

@@ -23,7 +23,7 @@ class PdoDriver {
 	private function showError($sql) {
 		if ($this->mode == 'debug') {
 			$msg = $this->link->errorInfo();
-			echo '<div><strong>', $msg[0], ':', '</strong></div>';
+			echo '<div><strong>', $msg[0], ' <em>', $msg[2], '</em></strong></div>';
 			echo '<div><em>', $sql, '</em></div>';
 			exit;
 		}
@@ -158,18 +158,21 @@ class PdoCommand {
 	public function execute($data = null, $fetchStyle = PDO::FETCH_ASSOC) {
 		$rs = 0;
 		$bl = $this->stmt->execute($data);
-		if ($bl) {
-			switch ($this->sqlType) {
-				case 'SELECT':
-					$rs = $this->stmt->fetchAll($fetchStyle);
-					break;
-				case 'UPDATE':
-				case 'DELETE':
-					$rs = $this->stmt->rowCount();
-					break;
-				case 'INSERT':
-					$rs = $this->link->lastInsertId();
-			}		
+		if (!$bl) {
+			$msg = $this->stmt->errorInfo();
+			throw new \Exception($msg[2]);
+		}
+
+		switch ($this->sqlType) {
+			case 'SELECT':
+				$rs = $this->stmt->fetchAll($fetchStyle);
+				break;
+			case 'UPDATE':
+			case 'DELETE':
+				$rs = $this->stmt->rowCount();
+				break;
+			case 'INSERT':
+				$rs = $this->link->lastInsertId();
 		}
 
 		return $rs;

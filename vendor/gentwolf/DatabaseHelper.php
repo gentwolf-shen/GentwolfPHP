@@ -15,7 +15,7 @@ class DatabaseHelper {
 	 * @param string $dbConfig
 	 * @return assoc array
 	 */
-	public static function fetchAll($table, $fields, $where, $dbConfig = 'default') {
+	public static function fetchAll($table, $fields, $where, $ext = null, $dbConfig = 'default') {
 		$params = [];
 		$data = [];
 		foreach ($where as $key => $value) {
@@ -27,18 +27,19 @@ class DatabaseHelper {
 		}
 
 		$sql = 'SELECT '. $fields .' FROM '. $table .' WHERE '. implode(' AND ', $params);
+		if ($ext != null) $sql .= ' '. $ext;
 		$cmd = Database::driver($dbConfig)->createCommand($sql);
 		return $cmd->execute($data);
 	}
 
-	public static function fetchRow($table, $fields, $where, $dbConfig = 'default') {
-		$rows = self::fetchAll($table, $fields, $where, $dbConfig);
+	public static function fetchRow($table, $fields, $where, $ext = null, $dbConfig = 'default') {
+		$rows = self::fetchAll($table, $fields, $where, $ext, $dbConfig);
 		return count($rows) > 0 ? $rows[0] : null;
 	}
 
-	public function fetchScalar($table, $fields, $where, $dbConfig = 'default') {
-		$rows = self::fetchAll($table, $fields, $where, $dbConfig);
-		return count($rows) > 0 ? $rows[0][0] : null;
+	public static function fetchScalar($table, $field, $where, $ext = null, $dbConfig = 'default') {
+		$rows = self::fetchAll($table, $field, $where, $ext, $dbConfig);
+		return count($rows) > 0 ? $rows[0][$field] : null;
 	}
 
 	/**

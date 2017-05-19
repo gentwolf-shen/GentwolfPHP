@@ -1,0 +1,21 @@
+<div class="panel-heading">
+    <div class="row">
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="strong">
+                    <?php if (isset($this->action['titleHref'])) { ?>
+                        <a href="<?php echo gentwolf\Gentwolf::url($this->action['titleHref']); ?>"><<?php echo $this->action['title']; ?></a>
+                    <?php } else { ?>
+                        <?php echo $this->action['title']; ?>
+                    <?php } ?>
+                </li>
+                <li><?php echo $this->action['subTitle']; ?></li>
+            </ol>
+        </div>
+        <div class="col-sm-2 text-right">
+            <?php if (isset($this->action['eventName'])) { ?>
+                <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right"><?php echo $this->action['eventName']; ?></a>
+            <?php } ?>
+        </div>
+    </div>
+</div>

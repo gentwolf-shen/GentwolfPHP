@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ block "title" }}</title>
+    <link rel="stylesheet" href="/assets/libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/manage/css/default.css">
+    <link rel="stylesheet" href="/assets/css/gentwolf.css">
+    <script src="/assets/libraries/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    {{ block "main" }}
+</div>
+
+
+<script src="/assets/libraries/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
+<script src="/assets/manage/js/Manage.js"></script>
+<script type="text/javascript">
+    var SITEURL = '?manage/';
+    $(function(){
+        {{ block "script" }}
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+</html>

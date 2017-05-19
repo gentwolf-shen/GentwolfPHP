@@ -1,0 +1,55 @@
+{{ extends "layout/default" }}
+
+{{ block "title"}}
+    <?php echo $this->action['title']; ?>
+{{ /block }}
+
+{{ block "main" }}
+<div class="panel panel-default">
+    {{ include "system/breadCrumb" }}
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr class="thCenter">
+                    <?php foreach ($this->headerItems as $key => $item) { ?>
+                        <th width="<?php echo $item['width'] ?>"><?php echo $item['name'] ?></th>
+                    <?php } ?>
+                    <?php if ($this->actions) { ?>
+                        <th>操作</th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->listItems['items'] as $items) { ?>
+                    <tr>
+                        <?php foreach ($this->headerItems as $key => $item) { ?>
+                            <td <?php echo gentwolf\ViewUtil::attr($item['attr']) ?>><?php echo gentwolf\ViewUtil::field($items[$key], $item) ?></td>
+                        <?php } ?>
+                        <?php if ($this->actions) { ?>
+                            <td class="text-center">
+                                <?php foreach ($this->actions as $k => $v) { ?>
+                                    <a<?php if ($v['confirm']) { ?> class="confirm" data-msg="<?php echo $v['confirm']['message'] ?>" data-ajax="<?php echo $v['confirm']['isAjax'] ?>" <?php } ?> href="<?php echo gentwolf\Gentwolf::$urlPrefix . str_replace('{KEY}', $items[$v['key']], $v['url']) ?>" title="<?php echo $v['text'] ?>"><span class="<?php echo $v['icon'] ?>"></span></a>
+                                    &nbsp;
+                                <?php } ?>
+                            </td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($this->pagination->getTotalPage() > 1) { ?>
+    <div class="panel-footer">
+        {{ include "system/pagination" }}
+    </div>
+    <?php } ?>
+</div>
+
+{{ /block }}
+
+{{ block "script" }}
+
+Manage.Table.list();
+
+{{ /block }}

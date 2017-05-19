@@ -1,0 +1,36 @@
+{{ extends "layout/default" }}
+
+{{ block "title"}}
+    AA
+{{ /block }}
+
+{{ block "main" }}
+
+
+<div class="panel panel-default">
+    {{ include "system/breadCrumb" }}
+
+    <form class="form-horizontal" autocomplete="off" action="<?php echo gentwolf\Gentwolf::$urlPrefix, 'table/update/', $this->m, '/', $this->value; ?>" data-index="<?php echo gentwolf\Gentwolf::$urlPrefix, 'table/list/', $this->m; ?>">
+
+        {{ include "system/input" }}
+
+        <div class="form-group">
+            <div class="col-xs-10 col-xs-offset-2">
+                <input type="button" id="btnBack" class="btn btn-warning" value="返回" />
+                &nbsp; &nbsp;
+                <input type="button" id="btnSave" class="btn btn-primary" value="保存" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+{{ include "system/icheck" }}
+
+{{ /block }}
+
+{{ block "script" }}
+
+Manage.Table.edit(<?php echo $this->data; ?>);
+
+{{ /block }}

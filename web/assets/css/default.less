@@ -1,0 +1,795 @@
+@colorBase: #333333;
+@colorGray1: #888888;
+@colorGray2: #f3f3f3;
+@colorGray3: #666666;
+@colorGray4: #111111;
+@colorGray5: #f5f5f5;
+@colorGray6: #e0e0e0;
+@colorGray7: #222222;
+@colorGray8: #dddddd;
+@colorGray9: #cccccc;
+@colorGray10: #555555;
+@colorRed: #e62b1e;
+@colorRed1: #fbc7c3;
+@colorWhite: #ffffff;
+@fontBase: 14px;
+@space: 10px;
+.border(@color:#ff0000) {
+  border: 1px solid @color;
+}
+.floatRight() {
+  float: right;
+  display: inline-block;
+}
+.siteWidth() {
+  width: 1200px;
+  margin: 0 auto;
+}
+.backgroundUrl(@url, @width, @height) {
+  background-image: url('../images/@{url}?__sprite');
+  display: inline-block;
+  width: @width;
+  height: @height;
+}
+.colorRed {
+  color: @colorRed;
+}
+
+.btnTed,
+.btnTed:focus {
+  background-color: @colorRed;
+  border: 1px solid @colorRed;
+  color: @colorWhite;
+}
+.btnTed:hover {
+  background-color: @colorRed * 0.9;
+  border: 1px solid @colorRed;
+  color: @colorWhite;
+}
+.line {
+  border-top: 1px dashed @colorRed;
+  height: 1px;
+  margin: @space 0;
+}
+.lineGray {
+  border: 1px dashed @colorGray1;
+  height: 1px;
+  margin-top: @space * 2;
+  margin-bottom: @space * 2;
+}
+.break {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+ul,ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body {
+  font-size: @fontBase;
+  color: @colorBase;
+  font-family: "Microsoft YaHei,Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+  min-width: 1200px;
+}
+
+.star {
+  color: @colorRed;
+}
+
+.paginationHolder {
+  text-align: right;
+  padding-right: 14px;
+}
+
+.breadcrumb {
+  margin-top: @space;
+}
+
+.inputCaptcha {
+  width: 135px;
+  display: inline-block;
+}
+#imageCaptcha {
+  cursor: pointer;
+}
+
+header {
+  .siteWidth();
+  height: 95px;
+
+  .logo {
+    float: left;
+    .backgroundUrl('logo.png', 138px, 50px);
+    display: inline-block;
+    margin-top: 18px;
+  }
+
+  .slogan {
+    display: inline-block;
+    width: 780px;
+    float: left;
+    margin-left: @space;
+
+    .motto {
+      font-size: @fontBase + 28;
+      color: @colorGray1;
+      margin-left: @space + 5;
+    }
+    .tip {
+
+    }
+  }
+
+  .userInfo {
+    float: right;
+    text-align: right;
+
+    .annotation {
+      margin-top: 5px;
+    }
+
+    .loginStatus {
+      font-size: @fontBase;
+
+      .loginLink,
+      #loginUsername {
+        color: @colorRed;
+      }
+
+      #loginStatus1 {
+        display: none;
+      }
+    }
+
+    .cartHolder {
+      margin-top: @space * 2;
+      .badge {
+        background-color: @colorWhite;
+        color: @colorRed;
+      }
+    }
+  }
+
+  .cartHolder {
+
+  }
+}
+
+.navBar {
+  background-color: @colorRed;
+  .nav-tabs {
+    border-bottom: 0;
+  }
+  .nav {
+    .siteWidth();
+
+    a {
+      color: @colorWhite;
+      font-weight: bold;
+      font-size: @fontBase + 2;
+
+    }
+    a:hover {
+      background-color: @colorWhite;
+      color: @colorRed;
+      border-bottom: 0;
+    }
+    a:focus {
+      outline: none;
+      outline-offset: 0;
+      color: @colorRed;
+      background-color: @colorWhite;
+    }
+
+    .active {
+      a,
+      a:hover,
+      a:focus {
+        color: @colorRed;
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+footer {
+  border-top: 3px solid @colorRed;
+  .item {
+    .siteWidth();
+    font-size: @fontBase + 2;
+
+    .footerHolder {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      float: right;
+      padding: @space + 10 0;
+
+      .footerItem {
+        display: inline-block;
+        width: 100px;
+      }
+    }
+  }
+}
+
+.tedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    vertical-align: top;
+    display: inline-block;
+    width: 180px;
+    margin: 0 8px 0 8px;
+
+    .thumbnail {
+      margin-bottom: @space;
+      height: 255px;
+
+      a {
+        display: block;
+        height: 98px;
+        overflow: hidden;
+      }
+      a:hover {
+        color: @colorRed;
+      }
+
+      .caption {
+        height: 113px;
+
+        .talk {
+          height: 22px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .title {
+          font-size: @fontBase;
+          color: @colorGray4;
+          padding-top: 0;
+          padding-bottom: 0;
+          margin-top: -2px;
+          margin-bottom: 0;
+          height: 45px;
+          overflow: hidden;
+        }
+      }
+
+      .duration {
+        background-color: @colorGray4;
+        color: #ffffff;
+        padding: 2px;
+        font-size: @fontBase - 2;
+        opacity: 0.8;
+        float: right;
+        margin-top: -25px;
+      }
+
+      .speaker {
+        color: @colorGray3;
+        margin-top: 4px;
+        font-style: italic;
+      }
+
+      .posted {
+        color: @colorGray3;
+        margin-top: @space / 2;
+      }
+    }
+
+    .thumbnail:hover {
+      border: 1px solid @colorRed;
+     /* background-color: @colorGray5;*/
+    }
+  }
+}
+
+.main {
+  .siteWidth();
+
+  .slideItem {
+    margin-top: @space;
+    background-color: @colorGray2;
+    #carouselTed {
+      width: 800px;
+      margin: 0 auto;
+
+      .item {
+        text-align: center;
+      }
+      .photo {
+        height: 450px;
+      }
+    }
+  }
+
+  .hotPlay {
+    .hotPlayItemHeader{
+      height: 30px;
+      line-height: 30px;
+
+      .hotPlayItemTitle {
+        font-size: @fontBase + 6;
+      }
+      .hotPlayItemTip {
+        .floatRight();
+      }
+    }
+
+    .hotPlayItemBody {
+      margin-top: @space;
+    }
+  }
+}
+
+.talks {
+  .searchHolder {
+    background-color: @colorGray2;
+
+    .searchItem {
+      .siteWidth();
+      height: 70px;
+      line-height: 70px;
+
+      .talksCount {
+        font-weight: bold;
+        font-size: @fontBase + 12;
+      }
+
+      .stir {
+        font-size: @fontBase + 6;
+      }
+
+      .justFind {
+        font-size: @fontBase + 8;
+        color: @colorGray7;
+      }
+
+      .form-group {
+        margin-top: @space + 10;
+        float: right;
+
+        .form-control {
+          width: 375px;
+          padding-right: @space;
+        }
+      }
+
+      #btnSearch {
+        width: 100%;
+      }
+
+      .btn-group {
+        margin-right: @space;
+      }
+
+      .dropdown-toggle {
+        width: 160px;
+
+        .caret {
+          float: right;
+          margin-top: -11px;
+        }
+      }
+    }
+  }
+
+  .tedOrder {
+    .orderHolder {
+      .siteWidth();
+      padding: @space @space + 6;
+
+      .currentSearch {
+        padding-left: 0;
+
+        .item {
+          display: inline-block;
+          padding: 0 5px 0 @space;
+          border-radius: 6px;
+          border: 1px solid @colorGray8;
+          margin: @space 0 0 5px;
+
+          .btnRemoveFilter {
+            margin-left: 5px;
+            cursor: pointer;
+            color: @colorGray9;
+          }
+          .btnRemoveFilter:hover {
+            color: @colorGray10;
+          }
+        }
+      }
+
+      .orderItem {
+        text-align: right;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .tedHolder {
+    .siteWidth();
+  }
+}
+
+.aboutTed {
+  text-align: center;
+  background-color: @colorGray2;
+
+  .aboutTedHolder {
+    padding: @space + 10 0;
+    color: @colorGray1;
+    .siteWidth();
+
+    .aboutTedTitle {
+      font-size: @fontBase + 18;
+      font-weight: bold;
+    }
+
+    .aboutTedIntro {
+      font-size: @fontBase + 10;
+      padding: @space 70px;
+    }
+  }
+}
+
+.talk {
+  .videoHolder {
+    background-color: #000000;
+    padding-top: @space;
+    padding-bottom: @space;
+
+    .videoPlayBox {
+      .siteWidth();
+
+      .talkTitle {
+        color: @colorWhite;
+        font-size: @fontBase + 6;
+        margin-top: @space;
+        margin-bottom: @space;
+
+        .goToSubtitle {
+          font-size: 14px;
+          margin-left: 10px;
+        }
+      }
+
+      video {
+        margin-left: 173px;
+        width: 854px;
+        height: 480px;
+      }
+
+      .setting {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 165px;
+        float: right;
+        color: @colorWhite;
+        font-size: @fontBase + 2;
+
+        li {
+          height: 30px;
+          line-height: 30px;
+          cursor: pointer;
+
+          a {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  .article {
+    .siteWidth();
+    .articleTitle {
+      font-size: @fontBase + 20;
+    }
+
+    .intro {
+      font-size: @fontBase + 6;
+      line-height: 30px;
+      color: @colorGray3;
+    }
+
+    .authorPhoto {
+      width: 120px;
+    }
+    .authorProfession, .authorIntro {
+      color: @colorGray3;
+    }
+
+    .topics {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+
+      li {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: @colorGray2;
+        padding: 4px 10px;
+        margin: 0 10px 6px 0;
+      }
+    }
+
+    .tedVideoList {
+      line-height: 30px;
+      width: 350px;
+      display: inline-block;
+    }
+
+    .splayerHolder {
+      display: inline-block;
+      width: 300px;
+      text-align: center;
+      margin-top: @space;
+    }
+
+    .tedCustom {
+      vertical-align: top;
+      padding-top: @space * 2;
+      .tedCustomTip {
+        color: @colorRed;
+        text-indent: 2em;
+        line-height: 25px;
+      }
+      .status1 {
+        color: @colorRed;
+      }
+      .status0 {
+        color: @colorGray6;
+      }
+      .subtitleInfo {
+        margin-top: @space;
+        line-height: 40px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .tedAddon {
+    .siteWidth();
+  }
+}
+
+.subtitle {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .subtitleHolder {
+    .siteWidth();
+    .subtitleTitle {
+      .col-xs-6 {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .subtitleTitleLeft,
+      .subtitleTitleRight {
+        text-align: center;
+        font-size: @fontBase + 2;
+        background-color: @colorGray5;
+        border-radius: 4px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+      .subtitleTitleLeft {
+        margin-right: @space;
+      }
+      .subtitleTitleRight {
+        margin-left: @space;
+      }
+    }
+
+    .subtitle {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      line-height: 30px;
+
+      li {
+        /*border-bottom: 1px dashed @colorGray3;*/
+      }
+    }
+
+    .leftSubtitle {
+      margin: 0;
+      padding: 0;
+      border-right: 1px dashed @colorGray3;
+
+      li {
+        padding-left: @space + 5;
+      }
+    }
+
+    .rightSubtitle {
+      padding: 0;
+      margin: 0;
+      li {
+        padding-left: @space + 15;
+      }
+    }
+
+    .tedAddon {
+      margin-top: @space + 5;
+    }
+  }
+}
+
+.topics {
+  .siteWidth();
+  margin-top: @space;
+
+  .letter {
+    font-size: @fontBase + 2;
+    font-weight: bold;
+  }
+
+  .items {
+    line-height: 30px;
+
+    .item {
+      display: inline-block;
+      width: 32%;
+
+      .videoCount {
+        color: @colorGray1;
+      }
+    }
+  }
+}
+
+.aboutUs {
+  .copyright {
+    .siteWidth();
+  }
+}
+
+.main {
+  .siteWidth();
+  margin-bottom: @space * 2;
+}
+
+.passport {
+  #register,
+  #login {
+    margin: @space * 5 0 0 @space * 7;
+    width: 620px;
+
+    #btnRegister,
+    #btnLogin {
+      width: 210px;
+    }
+  }
+}
+
+.userCenter {
+  .menu {
+    float: left;
+    width: 250px;
+    .panelMenu {
+      border: 1px solid @colorRed;
+
+      .panel-heading {
+        background-color: @colorRed;
+        color: @colorWhite;
+        font-weight: bold;
+      }
+      .list-group {
+        .list-group-item {
+          border-top: 1px solid @colorRed;
+        }
+        .list-group-item:hover {
+          background-color: @colorRed1;
+        }
+        .active {
+          background-color: @colorRed1;
+          border-color: @colorRed;
+          color: @colorRed;
+        }
+      }
+    }
+  }
+
+  .userMain {
+    min-height: 500px;
+    padding-left: 270px;
+
+    .catalogList {
+      .catalogDelete {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+#reminder {
+  position: fixed;
+  right: 0;
+  top: 40%;
+  background-color: @colorRed;
+  color: @colorWhite;
+  border-radius: 6px;
+  width: 70px;
+  height: 125px;
+  text-align: center;
+  padding: @space 0;
+
+  .reminderTitle {
+    font-weight: bold;
+  }
+
+  a {
+    color: @colorWhite;
+    text-decoration: none;
+  }
+
+  #dvdCatalog {
+    font-size: @fontBase + 46;
+    display: block;
+    margin-top: @space;
+  }
+  .badgeHolder {
+    position: relative;
+    z-index: 10;
+    margin: -48px 0 0 7px;
+  }
+  #reminderBadge {
+    background-color: @colorRed;
+  }
+}
+
+#dialog {
+  position: fixed;
+  z-index: 999999;
+  top: 100px;
+  left: 100px;
+  width: 355px;
+  height: 210px;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  border-radius: 8px;
+  display: none;
+
+  .msgBtnClose {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    font-size: 36px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    color: #959595;
+  }
+
+  .msgTitle {
+    color: @colorBase;
+    margin: 50px 30px 0 30px;
+    height: 75px;
+    overflow: hidden;
+    font-size: 18px;
+  }
+
+  .btns {
+    margin: 10px 30px 10px 30px;
+    text-align: center;
+  }
+
+  .btn {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 20px 0 20px;
+  }
+}

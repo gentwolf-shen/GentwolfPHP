@@ -1,0 +1,173 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+a {
+  outline: none;
+}
+.f5 {
+  background-color: #f5f5f5;
+}
+#loginPanel {
+  width: 360px;
+  margin: 10% auto;
+}
+.strong {
+  font-weight: bold;
+}
+textarea {
+  resize: none;
+}
+.editor {
+  display: none;
+}
+.container-fluid {
+  padding: 0;
+}
+.form-horizontal {
+  width: 98%;
+  margin-top: 15px;
+}
+.breadcrumb {
+  margin-bottom: 0;
+}
+.radioHolder {
+  padding-top: 6px;
+}
+iframe {
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+.nav-tabs > li.active > a {
+  padding-right: 25px;
+}
+.tabClose {
+  float: right;
+  display: none;
+  cursor: pointer;
+  margin: -35px 5px 0 0;
+  opacity: 0.2;
+}
+.tabClose:hover {
+  opacity: 0.5;
+}
+.nav-tabs > li.active .tabClose {
+  display: block;
+}
+.thCenter > th {
+  text-align: center;
+}
+.tdNo {
+  width: 100px;
+  text-align: center;
+}
+.border {
+  border: 1px solid #ff0000;
+}
+.topNav {
+  background: #4d5b76;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4d5b76), color-stop(1, #6c7a95));
+  background: -ms-linear-gradient(bottom, #4d5b76, #6c7a95);
+  background: -moz-linear-gradient(center bottom, #4d5b76 0%, #6c7a95 100%);
+  background: -o-linear-gradient(bottom, #4d5b76, #6c7a95);
+  filter: progid:dximagetransform.microsoft.gradient(startColorStr='#4d5b76', EndColorStr='#6c7a95');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#6c7a95',EndColorStr='#4d5b76')";
+  border: 0;
+  border-radius: 0;
+  height: 40px;
+  line-height: 38px;
+  padding: 0 10px 0 10px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.topNav .user {
+  float: right;
+}
+.mainLeft {
+  width: 200px;
+  float: left;
+  margin-left: 2px;
+}
+.mainLeft .list-group-item {
+  padding: 0;
+  cursor: pointer;
+}
+.mainLeft .list-group-item:hover {
+  background-color: #f5f5f5;
+}
+.mainLeft .itemTitle {
+  padding: 10px 5px 10px 15px;
+  height: 100%;
+}
+.mainLeft .itemTitleSelected {
+  background-color: #4d5b76;
+  color: #ffffff;
+}
+.mainLeft .subNav {
+  border-top: 1px solid #dddddd;
+  margin-top: 5px;
+  display: none;
+}
+.mainLeft .subNav .subNavItem {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 5px;
+  padding-left: 25px;
+}
+.mainLeft .subNav .subNavItem:hover {
+  background-color: #ffffff;
+}
+.mainLeft .subNav .subNavItemselected {
+  background-color: #f5f5f5;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+.mainRight {
+  margin-left: 220px;
+}
+.mainRight .rightNav {
+  height: 50px;
+  margin-right: 0;
+  padding-right: 0;
+}
+.mainRight .rightNav .col-xs-12 {
+  padding-right: 0;
+}
+#categoryMenu {
+  position: absolute;
+  top: 100px;
+  left: 70%;
+  z-index: 100;
+  width: 150px;
+  border: 1px solid #dddddd;
+  display: none;
+}
+#catTree {
+  width: 500px;
+  border: 1px solid #dddddd;
+  background-color: #f0f6e4;
+  height: 100%;
+  min-height: 300px;
+}
+.tab-content {
+  background-color: #ffffff;
+}
+.paginationHolder {
+  text-align: right;
+}
+.paginationHolder .summary {
+  display: inline;
+  vertical-align: 45%;
+}
+.paginationHolder nav {
+  display: inline;
+  margin-left: 20px;
+}
+.paginationHolder nav ul {
+  padding: 0;
+  margin: 0;
+}

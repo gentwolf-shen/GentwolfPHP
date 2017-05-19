@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AA</title>
+    <link rel="stylesheet" href="/assets/libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/manage/css/default.css">
+    <link rel="stylesheet" href="/assets/css/gentwolf.css">
+    <script src="/assets/libraries/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+    <div class="row">
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="strong">
+                    <?php if (isset($this->action['titleHref'])) { ?>
+                        <a href="<?php echo gentwolf\Gentwolf::url($this->action['titleHref']); ?>"><<?php echo $this->action['title']; ?></a>
+                    <?php } else { ?>
+                        <?php echo $this->action['title']; ?>
+                    <?php } ?>
+                </li>
+                <li><?php echo $this->action['subTitle']; ?></li>
+            </ol>
+        </div>
+        <div class="col-sm-2 text-right">
+            <?php if (isset($this->action['eventName'])) { ?>
+                <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right"><?php echo $this->action['eventName']; ?></a>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
+    <form class="form-horizontal" autocomplete="off" action="<?php echo gentwolf\Gentwolf::$urlPrefix, 'table/update/', $this->m, '/', $this->value; ?>" data-index="<?php echo gentwolf\Gentwolf::$urlPrefix, 'table/list/', $this->m; ?>">
+
+        <?php foreach ($this->inputItems as $label => $item) { ?>
+    <div class="form-group">
+        <label class="col-xs-2 control-label"><?php echo $item['name'] ?></label>
+        <div class="col-xs-10">
+            <?php echo gentwolf\ViewHelper::input($label, $item['input']) ?>
+        </div>
+    </div>
+<?php } ?>
+
+        <div class="form-group">
+            <div class="col-xs-10 col-xs-offset-2">
+                <input type="button" id="btnBack" class="btn btn-warning" value="返回" />
+                &nbsp; &nbsp;
+                <input type="button" id="btnSave" class="btn btn-primary" value="保存" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/assets/libraries/icheck/js/icheck.min.js"></script>
+<link rel="stylesheet" href="/assets/libraries/icheck/skins/flat/blue.css">
+</div>
+
+
+<script src="/assets/libraries/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
+<script src="/assets/manage/js/Manage.js"></script>
+<script type="text/javascript">
+    var SITEURL = '?manage/';
+    $(function(){
+        Manage.Table.edit(<?php echo $this->data; ?>);
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+</html>

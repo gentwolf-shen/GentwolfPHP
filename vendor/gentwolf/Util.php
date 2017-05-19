@@ -13,5 +13,12 @@ class Util {
 		return implode('', $chars);
 	}
 
-
+	/**
+	 * 从config目录的errorCode中取出信息，并输出
+	 * @param int $code
+	 */
+	public static function writeMsg($code = 0) {
+		$msg = Gentwolf::loadConfig('messageCode', (string)$code);
+		Context::jsonMsg($code, $msg);
+	}
 }

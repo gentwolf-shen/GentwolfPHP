@@ -6,7 +6,7 @@ use Exception;
 
 class View {
     private $config = array();
-    public $params = null;
+    public $params = [];
     private $viewPath = '';
 
     function __construct($config) {

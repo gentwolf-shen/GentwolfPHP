@@ -23,6 +23,9 @@ final class Gentwolf {
 	public static $controller;
 	public static $action;
 
+	public static $segments;
+	public static $urlPrefix;
+
 	public static function run($libPath, $appPath) {
 		self::$libPath = $libPath;
 		self::$appPath = $appPath;
@@ -100,6 +103,8 @@ final class Gentwolf {
 			self::$module = $segments[0];
 			self::$controller = ucfirst($segments[1]);
 			self::$action = $segments[2];
+
+			self::$segments = array_slice($segments, 3);
 		}
 	}
 
@@ -119,7 +124,7 @@ final class Gentwolf {
 
 		$action = self::$action . 'Action';
 		if (method_exists($obj, $action)) {
-			call_user_func([$obj, $action]);
+			call_user_func([$obj, $action], self::$segments);
 		} else {
 			throw new Exception('Action "'. $action .'" not found in '. $controller);
 		}
@@ -135,7 +140,7 @@ final class Gentwolf {
 	}
 
 	// 用户的配置文件
-	public static function loadConfig($name) {
+	public static function loadConfig($name, $key = null) {
 		$config = isset(self::$userConfig[$name]) ? self::$userConfig[$name] : null;
 
 		if ($config === null) {
@@ -143,11 +148,22 @@ final class Gentwolf {
 			if (!is_file($filename)) {
 				$filename = self::$appPath .'/config/'. $name .'.php';
 			}
-			if (is_file($filename)) {
-				$config = require_once $filename;
-				self::$userConfig[$name] = $config;
+
+			if (!is_file($filename)) {
+				throw new Exception('config "'. $filename .'" not found');
 			}
+
+			$config = require_once $filename;
+			self::$userConfig[$name] = $config;
 		}
-		return $config;
+		return $key === null ? $config : (isset($config[$key]) ? $config[$key] : null);
+	}
+
+	public static function url($str) {
+		if (self::config('rewrite')) {
+			$str = str_replace('?', '&', $str);
+		}
+
+		return self::$urlPrefix . $str;
 	}
 }

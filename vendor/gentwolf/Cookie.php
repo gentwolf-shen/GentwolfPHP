@@ -3,17 +3,20 @@
 namespace gentwolf;
 
 class Cookie {
+	public static function save($name, $data) {
+		$str = is_array($data) || is_object($data) ? serialize($data) : $data;
+		return self::set($name, $str);
+	}
+
 	public static function set($name, $value = '', $expire = 0, $path = '/', $domain = '', $secure = false, $httpOnly = false) {
 		if (headers_sent()) return false;
 		if (0 != $expire) $expire += time();
 		return setcookie($name, $value, $expire, $path, $domain, $secure, $httpOnly);
 	}
 
-
 	public static function get($key, $default = '') {
 		return isset($_COOKIE[$key]) ? $_COOKIE[$key] : $default;
 	}
-
 
 	public static function delete() {
 		$args = func_get_args();

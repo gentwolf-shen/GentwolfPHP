@@ -1,0 +1,646 @@
+.colorRed {
+  color: #e62b1e;
+}
+.btnTed,
+.btnTed:focus {
+  background-color: #e62b1e;
+  border: 1px solid #e62b1e;
+  color: #ffffff;
+}
+.btnTed:hover {
+  background-color: #cf271b;
+  border: 1px solid #e62b1e;
+  color: #ffffff;
+}
+.line {
+  border-top: 1px dashed #e62b1e;
+  height: 1px;
+  margin: 10px 0;
+}
+.lineGray {
+  border: 1px dashed #888888;
+  height: 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.break {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body {
+  font-size: 14px;
+  color: #333333;
+  font-family: "Microsoft YaHei,Helvetica Neue Custom", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-width: 1200px;
+}
+.star {
+  color: #e62b1e;
+}
+.paginationHolder {
+  text-align: right;
+  padding-right: 14px;
+}
+.breadcrumb {
+  margin-top: 10px;
+}
+.inputCaptcha {
+  width: 135px;
+  display: inline-block;
+}
+#imageCaptcha {
+  cursor: pointer;
+}
+header {
+  width: 1200px;
+  margin: 0 auto;
+  height: 95px;
+}
+header .logo {
+  float: left;
+  background-image: url('../images/logo.png?__sprite');
+  width: 138px;
+  height: 50px;
+  display: inline-block;
+  margin-top: 18px;
+}
+header .slogan {
+  display: inline-block;
+  width: 780px;
+  float: left;
+  margin-left: 10px;
+}
+header .slogan .motto {
+  font-size: 42px;
+  color: #888888;
+  margin-left: 15px;
+}
+header .userInfo {
+  float: right;
+  text-align: right;
+}
+header .userInfo .annotation {
+  margin-top: 5px;
+}
+header .userInfo .loginStatus {
+  font-size: 14px;
+}
+header .userInfo .loginStatus .loginLink,
+header .userInfo .loginStatus #loginUsername {
+  color: #e62b1e;
+}
+header .userInfo .loginStatus #loginStatus1 {
+  display: none;
+}
+header .userInfo .cartHolder {
+  margin-top: 20px;
+}
+header .userInfo .cartHolder .badge {
+  background-color: #ffffff;
+  color: #e62b1e;
+}
+.navBar {
+  background-color: #e62b1e;
+}
+.navBar .nav-tabs {
+  border-bottom: 0;
+}
+.navBar .nav {
+  width: 1200px;
+  margin: 0 auto;
+}
+.navBar .nav a {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+.navBar .nav a:hover {
+  background-color: #ffffff;
+  color: #e62b1e;
+  border-bottom: 0;
+}
+.navBar .nav a:focus {
+  outline: none;
+  outline-offset: 0;
+  color: #e62b1e;
+  background-color: #ffffff;
+}
+.navBar .nav .active a,
+.navBar .nav .active a:hover,
+.navBar .nav .active a:focus {
+  color: #e62b1e;
+  border-bottom: 0;
+}
+footer {
+  border-top: 3px solid #e62b1e;
+}
+footer .item {
+  width: 1200px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+footer .item .footerHolder {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+  padding: 20px 0;
+}
+footer .item .footerHolder .footerItem {
+  display: inline-block;
+  width: 100px;
+}
+.tedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tedList li {
+  vertical-align: top;
+  display: inline-block;
+  width: 180px;
+  margin: 0 8px 0 8px;
+}
+.tedList li .thumbnail {
+  margin-bottom: 10px;
+  height: 255px;
+}
+.tedList li .thumbnail a {
+  display: block;
+  height: 98px;
+  overflow: hidden;
+}
+.tedList li .thumbnail a:hover {
+  color: #e62b1e;
+}
+.tedList li .thumbnail .caption {
+  height: 113px;
+}
+.tedList li .thumbnail .caption .talk {
+  height: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tedList li .thumbnail .caption .title {
+  font-size: 14px;
+  color: #111111;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: -2px;
+  margin-bottom: 0;
+  height: 45px;
+  overflow: hidden;
+}
+.tedList li .thumbnail .duration {
+  background-color: #111111;
+  color: #ffffff;
+  padding: 2px;
+  font-size: 12px;
+  opacity: 0.8;
+  float: right;
+  margin-top: -25px;
+}
+.tedList li .thumbnail .speaker {
+  color: #666666;
+  margin-top: 4px;
+  font-style: italic;
+}
+.tedList li .thumbnail .posted {
+  color: #666666;
+  margin-top: 5px;
+}
+.tedList li .thumbnail:hover {
+  border: 1px solid #e62b1e;
+  /* background-color: @colorGray5;*/
+}
+.main {
+  width: 1200px;
+  margin: 0 auto;
+}
+.main .slideItem {
+  margin-top: 10px;
+  background-color: #f3f3f3;
+}
+.main .slideItem #carouselTed {
+  width: 800px;
+  margin: 0 auto;
+}
+.main .slideItem #carouselTed .item {
+  text-align: center;
+}
+.main .slideItem #carouselTed .photo {
+  height: 450px;
+}
+.main .hotPlay .hotPlayItemHeader {
+  height: 30px;
+  line-height: 30px;
+}
+.main .hotPlay .hotPlayItemHeader .hotPlayItemTitle {
+  font-size: 20px;
+}
+.main .hotPlay .hotPlayItemHeader .hotPlayItemTip {
+  float: right;
+  display: inline-block;
+}
+.main .hotPlay .hotPlayItemBody {
+  margin-top: 10px;
+}
+.talks .searchHolder {
+  background-color: #f3f3f3;
+}
+.talks .searchHolder .searchItem {
+  width: 1200px;
+  margin: 0 auto;
+  height: 70px;
+  line-height: 70px;
+}
+.talks .searchHolder .searchItem .talksCount {
+  font-weight: bold;
+  font-size: 26px;
+}
+.talks .searchHolder .searchItem .stir {
+  font-size: 20px;
+}
+.talks .searchHolder .searchItem .justFind {
+  font-size: 22px;
+  color: #222222;
+}
+.talks .searchHolder .searchItem .form-group {
+  margin-top: 20px;
+  float: right;
+}
+.talks .searchHolder .searchItem .form-group .form-control {
+  width: 375px;
+  padding-right: 10px;
+}
+.talks .searchHolder .searchItem #btnSearch {
+  width: 100%;
+}
+.talks .searchHolder .searchItem .btn-group {
+  margin-right: 10px;
+}
+.talks .searchHolder .searchItem .dropdown-toggle {
+  width: 160px;
+}
+.talks .searchHolder .searchItem .dropdown-toggle .caret {
+  float: right;
+  margin-top: -11px;
+}
+.talks .tedOrder .orderHolder {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+}
+.talks .tedOrder .orderHolder .currentSearch {
+  padding-left: 0;
+}
+.talks .tedOrder .orderHolder .currentSearch .item {
+  display: inline-block;
+  padding: 0 5px 0 10px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  margin: 10px 0 0 5px;
+}
+.talks .tedOrder .orderHolder .currentSearch .item .btnRemoveFilter {
+  margin-left: 5px;
+  cursor: pointer;
+  color: #cccccc;
+}
+.talks .tedOrder .orderHolder .currentSearch .item .btnRemoveFilter:hover {
+  color: #555555;
+}
+.talks .tedOrder .orderHolder .orderItem {
+  text-align: right;
+  padding-right: 0;
+}
+.talks .tedHolder {
+  width: 1200px;
+  margin: 0 auto;
+}
+.aboutTed {
+  text-align: center;
+  background-color: #f3f3f3;
+}
+.aboutTed .aboutTedHolder {
+  padding: 20px 0;
+  color: #888888;
+  width: 1200px;
+  margin: 0 auto;
+}
+.aboutTed .aboutTedHolder .aboutTedTitle {
+  font-size: 32px;
+  font-weight: bold;
+}
+.aboutTed .aboutTedHolder .aboutTedIntro {
+  font-size: 24px;
+  padding: 10px 70px;
+}
+.talk .videoHolder {
+  background-color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.talk .videoHolder .videoPlayBox {
+  width: 1200px;
+  margin: 0 auto;
+}
+.talk .videoHolder .videoPlayBox .talkTitle {
+  color: #ffffff;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.talk .videoHolder .videoPlayBox .talkTitle .goToSubtitle {
+  font-size: 14px;
+  margin-left: 10px;
+}
+.talk .videoHolder .videoPlayBox video {
+  margin-left: 173px;
+  width: 854px;
+  height: 480px;
+}
+.talk .videoHolder .videoPlayBox .setting {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 165px;
+  float: right;
+  color: #ffffff;
+  font-size: 16px;
+}
+.talk .videoHolder .videoPlayBox .setting li {
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+.talk .videoHolder .videoPlayBox .setting li a {
+  color: #ffffff;
+}
+.talk .article {
+  width: 1200px;
+  margin: 0 auto;
+}
+.talk .article .articleTitle {
+  font-size: 34px;
+}
+.talk .article .intro {
+  font-size: 20px;
+  line-height: 30px;
+  color: #666666;
+}
+.talk .article .authorPhoto {
+  width: 120px;
+}
+.talk .article .authorProfession,
+.talk .article .authorIntro {
+  color: #666666;
+}
+.talk .article .topics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.talk .article .topics li {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f3f3f3;
+  padding: 4px 10px;
+  margin: 0 10px 6px 0;
+}
+.talk .article .tedVideoList {
+  line-height: 30px;
+  width: 350px;
+  display: inline-block;
+}
+.talk .article .splayerHolder {
+  display: inline-block;
+  width: 300px;
+  text-align: center;
+  margin-top: 10px;
+}
+.talk .article .tedCustom {
+  vertical-align: top;
+  padding-top: 20px;
+}
+.talk .article .tedCustom .tedCustomTip {
+  color: #e62b1e;
+  text-indent: 2em;
+  line-height: 25px;
+}
+.talk .article .tedCustom .status1 {
+  color: #e62b1e;
+}
+.talk .article .tedCustom .status0 {
+  color: #e0e0e0;
+}
+.talk .article .tedCustom .subtitleInfo {
+  margin-top: 10px;
+  line-height: 40px;
+  font-size: 16px;
+}
+.talk .tedAddon {
+  width: 1200px;
+  margin: 0 auto;
+}
+.subtitle .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.subtitle .subtitleHolder {
+  width: 1200px;
+  margin: 0 auto;
+}
+.subtitle .subtitleHolder .subtitleTitle .col-xs-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.subtitle .subtitleHolder .subtitleTitle .subtitleTitleLeft,
+.subtitle .subtitleHolder .subtitleTitle .subtitleTitleRight {
+  text-align: center;
+  font-size: 16px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.subtitle .subtitleHolder .subtitleTitle .subtitleTitleLeft {
+  margin-right: 10px;
+}
+.subtitle .subtitleHolder .subtitleTitle .subtitleTitleRight {
+  margin-left: 10px;
+}
+.subtitle .subtitleHolder .subtitle {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  line-height: 30px;
+}
+.subtitle .subtitleHolder .subtitle li {
+  /*border-bottom: 1px dashed @colorGray3;*/
+}
+.subtitle .subtitleHolder .leftSubtitle {
+  margin: 0;
+  padding: 0;
+  border-right: 1px dashed #666666;
+}
+.subtitle .subtitleHolder .leftSubtitle li {
+  padding-left: 15px;
+}
+.subtitle .subtitleHolder .rightSubtitle {
+  padding: 0;
+  margin: 0;
+}
+.subtitle .subtitleHolder .rightSubtitle li {
+  padding-left: 25px;
+}
+.subtitle .subtitleHolder .tedAddon {
+  margin-top: 15px;
+}
+.topics {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.topics .letter {
+  font-size: 16px;
+  font-weight: bold;
+}
+.topics .items {
+  line-height: 30px;
+}
+.topics .items .item {
+  display: inline-block;
+  width: 32%;
+}
+.topics .items .item .videoCount {
+  color: #888888;
+}
+.aboutUs .copyright {
+  width: 1200px;
+  margin: 0 auto;
+}
+.main {
+  width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.passport #register,
+.passport #login {
+  margin: 50px 0 0 70px;
+  width: 620px;
+}
+.passport #register #btnRegister,
+.passport #login #btnRegister,
+.passport #register #btnLogin,
+.passport #login #btnLogin {
+  width: 210px;
+}
+.userCenter .menu {
+  float: left;
+  width: 250px;
+}
+.userCenter .menu .panelMenu {
+  border: 1px solid #e62b1e;
+}
+.userCenter .menu .panelMenu .panel-heading {
+  background-color: #e62b1e;
+  color: #ffffff;
+  font-weight: bold;
+}
+.userCenter .menu .panelMenu .list-group .list-group-item {
+  border-top: 1px solid #e62b1e;
+}
+.userCenter .menu .panelMenu .list-group .list-group-item:hover {
+  background-color: #fbc7c3;
+}
+.userCenter .menu .panelMenu .list-group .active {
+  background-color: #fbc7c3;
+  border-color: #e62b1e;
+  color: #e62b1e;
+}
+.userCenter .userMain {
+  min-height: 500px;
+  padding-left: 270px;
+}
+.userCenter .userMain .catalogList .catalogDelete {
+  cursor: pointer;
+}
+#reminder {
+  position: fixed;
+  right: 0;
+  top: 40%;
+  background-color: #e62b1e;
+  color: #ffffff;
+  border-radius: 6px;
+  width: 70px;
+  height: 125px;
+  text-align: center;
+  padding: 10px 0;
+}
+#reminder .reminderTitle {
+  font-weight: bold;
+}
+#reminder a {
+  color: #ffffff;
+  text-decoration: none;
+}
+#reminder #dvdCatalog {
+  font-size: 60px;
+  display: block;
+  margin-top: 10px;
+}
+#reminder .badgeHolder {
+  position: relative;
+  z-index: 10;
+  margin: -48px 0 0 7px;
+}
+#reminder #reminderBadge {
+  background-color: #e62b1e;
+}
+#dialog {
+  position: fixed;
+  z-index: 999999;
+  top: 100px;
+  left: 100px;
+  width: 355px;
+  height: 210px;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  border-radius: 8px;
+  display: none;
+}
+#dialog .msgBtnClose {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  font-size: 36px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  color: #959595;
+}
+#dialog .msgTitle {
+  color: #333333;
+  margin: 50px 30px 0 30px;
+  height: 75px;
+  overflow: hidden;
+  font-size: 18px;
+}
+#dialog .btns {
+  margin: 10px 30px 10px 30px;
+  text-align: center;
+}
+#dialog .btn {
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 0 20px 0 20px;
+}

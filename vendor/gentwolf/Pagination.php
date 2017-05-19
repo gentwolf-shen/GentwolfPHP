@@ -10,7 +10,7 @@ class Pagination {
 	private $offset;
 	private $prev;
 	private $next;
-    private $url;
+	private $url;
 
 	function __construct($config = null) {
 		$config = array_merge(array(
@@ -37,17 +37,17 @@ class Pagination {
 		$this->offset = ($this->page - 1) * $this->size;
 	}
 
-    public function getPrevUrl() {
-        return str_replace('{page}', $this->prev, $this->url);
-    }
+	public function getPrevUrl() {
+		return str_replace('{page}', $this->prev, $this->url);
+	}
 
-    public function getNextUrl() {
-        return str_replace('{page}', $this->next, $this->url);
-    }
+	public function getNextUrl() {
+		return str_replace('{page}', $this->next, $this->url);
+	}
 
-    public function getCount() {
-        return $this->count;
-    }
+	public function getCount() {
+		return $this->count;
+	}
 
 	public function getTotalPage() {
 		return $this->totalPage;
@@ -104,7 +104,7 @@ class Pagination {
 	public function showDigg() {
 		$tmp[] = '<nav><ul class="pagination">';
 		$tmp[] = $this->getPrevHref();
-		
+
 		if ($this->totalPage < 13) {
 			$tmp[] = $this->getLoopHref(1, $this->totalPage);
 		} else if ($this->page < 9) {
@@ -124,14 +124,14 @@ class Pagination {
 			$tmp[] = $this->getLoopHref($this->page - 5, $this->page + 5);
 			$tmp[] = $this->getSpace();
 			$tmp[] = $this->getHref($this->totalPage - 1);
-			$tmp[] = $this->getHref($this->totalPage);			
+			$tmp[] = $this->getHref($this->totalPage);
 		}
 
 		$tmp[] = $this->getNextHref();
 		$tmp[] = '</ul></nav>';
 		return implode(' ', $tmp);
 	}
-	
+
 	public function render($style = 1) {
 		return $this->showDigg();
 	}

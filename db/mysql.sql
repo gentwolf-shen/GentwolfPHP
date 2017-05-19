@@ -1,0 +1,45 @@
+create database gentwolf;
+
+CREATE TABLE `admin` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL DEFAULT '',
+  `password` CHAR(32) NOT NULL DEFAULT '',
+  `add_time` INT UNSIGNED NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  INDEX `index2` (`username` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+INSERT INTO admin(username,password,add_time) VALUES('admin', '96e79218965eb72c92a549dd5a330112', '1338271777');
+
+CREATE TABLE `category` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `parent_id` INT UNSIGNED NOT NULL DEFAULT 0,
+  `top_id` INT UNSIGNED NOT NULL DEFAULT 0,
+  `name` VARCHAR(50) NOT NULL DEFAULT '',
+  `keywords` VARCHAR(200) NOT NULL DEFAULT '',
+  `description` VARCHAR(200) NOT NULL DEFAULT '',
+  `show_order` INT UNSIGNED NOT NULL DEFAULT 0,
+  `is_show` INT UNSIGNED NOT NULL,
+  `is_nav` INT UNSIGNED NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  INDEX `index2` (`parent_id` ASC),
+  INDEX `index3` (`is_show` ASC),
+  INDEX `index4` (`is_nav` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE `gentwolf`.`article` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_id` INT UNSIGNED NOT NULL DEFAULT 0,
+  `title` VARCHAR(200) NOT NULL DEFAULT '',
+  `keywords` VARCHAR(200) NOT NULL DEFAULT '',
+  `description` VARCHAR(2555) NOT NULL DEFAULT '',
+  `is_show` TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  `content` TEXT NOT NULL,
+  `add_time` INT UNSIGNED NOT NULL DEFAULT 0,
+  `edit_time` INT UNSIGNED NOT NULL DEFAULT 0,
+  `tags` VARCHAR(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

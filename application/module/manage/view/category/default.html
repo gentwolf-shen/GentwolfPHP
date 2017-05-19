@@ -1,0 +1,82 @@
+{{ extends "layout/default" }}
+
+{{ block "title"}}
+    分类列表
+{{ /block }}
+
+{{ block "main" }}
+
+<div class="panel panel-default">
+
+    <div id="categoryMenu" class="list-group">
+        <a class="list-group-item" href="javascript:void(0)" data-item="addCat">
+            <span class="glyphicon glyphicon-plus"></span> 添加分类
+        </a>
+        <a class="list-group-item" href="javascript:void(0)" data-item="editCat">
+            <span class="glyphicon glyphicon-edit"></span> 修改分类
+        </a>
+        <a class="list-group-item" href="javascript:void(0)" data-item="delCat">
+            <span class="glyphicon glyphicon-remove"></span> 删除分类
+        </a>
+    </div>
+
+    <table class="table">
+        <tr>
+            <td style="width: 300px">
+                <div id="catTree" class="ztree"></div>
+            </td>
+            <td>
+                <div class="well">
+                    <h5>使用说明:</h5>
+                    <ol>
+                        <li>在左侧区域点击右键，可以“添加分类”、“编辑分类”与“删除”</li>
+                        <li>拖拽分类，可以调整层级关系与显示顺序</li>
+                        <li>新添加的分类，默认会追加在最后面，<a href="javascript:window.location.reload()" role="button" class="btn btn-primary">重新加载</a>后，会显示正常</li>
+                    </ol>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div id="panelEdit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">编辑分类</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="form" autocomplete="off">
+                        <input type="hidden" id="pId" name="data[parent_id]" value="0" />
+
+                        {{ include 'system/input' }}
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" id="btnSave" class="btn btn-primary">保存分类</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="/assets/libraries/zTree/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript" src="/assets/manage/js/Category.js"></script>
+<link rel="stylesheet" href="/assets/libraries/zTree/css/zTreeStyle.css">
+
+{{ include "system/icheck" }}
+
+{{ /block }}
+
+
+{{ block "script" }}
+var nodes = <?php echo json_encode($this->items); ?>;
+
+Category.show('catTree', 'categoryMenu', nodes);
+Manage.Category.init();
+
+{{ /block }}

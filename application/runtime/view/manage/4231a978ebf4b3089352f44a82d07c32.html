@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php echo $this->action['title']; ?></title>
+    <link rel="stylesheet" href="/assets/libraries/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/manage/css/default.css">
+    <link rel="stylesheet" href="/assets/css/gentwolf.css">
+    <script src="/assets/libraries/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+    <div class="row">
+        <div class="col-sm-10">
+            <ol class="breadcrumb">
+                <li class="strong">
+                    <?php if (isset($this->action['titleHref'])) { ?>
+                        <a href="<?php echo gentwolf\Gentwolf::url($this->action['titleHref']); ?>"><<?php echo $this->action['title']; ?></a>
+                    <?php } else { ?>
+                        <?php echo $this->action['title']; ?>
+                    <?php } ?>
+                </li>
+                <li><?php echo $this->action['subTitle']; ?></li>
+            </ol>
+        </div>
+        <div class="col-sm-2 text-right">
+            <?php if (isset($this->action['eventName'])) { ?>
+                <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right"><?php echo $this->action['eventName']; ?></a>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr class="thCenter">
+                    <?php foreach ($this->headerItems as $key => $item) { ?>
+                        <th width="<?php echo $item['width'] ?>"><?php echo $item['name'] ?></th>
+                    <?php } ?>
+                    <?php if ($this->actions) { ?>
+                        <th>操作</th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->listItems['items'] as $items) { ?>
+                    <tr>
+                        <?php foreach ($this->headerItems as $key => $item) { ?>
+                            <td <?php echo gentwolf\ViewUtil::attr($item['attr']) ?>><?php echo gentwolf\ViewUtil::field($items[$key], $item) ?></td>
+                        <?php } ?>
+                        <?php if ($this->actions) { ?>
+                            <td class="text-center">
+                                <?php foreach ($this->actions as $k => $v) { ?>
+                                    <a<?php if ($v['confirm']) { ?> class="confirm" data-msg="<?php echo $v['confirm']['message'] ?>" data-ajax="<?php echo $v['confirm']['isAjax'] ?>" <?php } ?> href="<?php echo gentwolf\Gentwolf::$urlPrefix . str_replace('{KEY}', $items[$v['key']], $v['url']) ?>" title="<?php echo $v['text'] ?>"><span class="<?php echo $v['icon'] ?>"></span></a>
+                                    &nbsp;
+                                <?php } ?>
+                            </td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($this->pagination->getTotalPage() > 1) { ?>
+    <div class="panel-footer">
+        <div class="paginationHolder">
+	<span class="summary">共有记录 <b><?php echo $this->pagination->getTotalPage() ?></b> 条</span>
+	<?php echo $this->pagination->render() ?>
+</div>
+    </div>
+    <?php } ?>
+</div>
+</div>
+
+
+<script src="/assets/libraries/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
+<script src="/assets/manage/js/Manage.js"></script>
+<script type="text/javascript">
+    var SITEURL = '?manage/';
+    $(function(){
+        Manage.Table.list();
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+</html>

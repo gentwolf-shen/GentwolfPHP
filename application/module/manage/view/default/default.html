@@ -1,0 +1,78 @@
+{{ extends "layout/default" }}
+
+{{ block "title"}}
+管理系统
+{{ /block }}
+
+{{ block "main" }}
+
+<div class="container-fluid">
+    <div class="topNav">
+        <span>
+            管理面板
+        </span>
+        <div class="user">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="glyphicon glyphicon-user"></span>
+                    {{ echo $this->user }}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                    <li><a href="">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <aside class="mainLeft">
+            <ol class="list-group">
+                <?php foreach ($this->items as $i => $item) { ?>
+                <li class="list-group-item">
+                    <div class="itemTitle">
+                        <span class="glyphicon glyphicon-<?php echo $item['icon']; ?>"></span>
+                        <?php echo $item['title']; ?>
+                        <span class="caret"></span>
+                    </div>
+                    <div class="subNav">
+
+                        <?php foreach ($item['items'] as $j => $subItem) { ?>
+                        <a href="javascript:void(0)" data-href="<?php echo $subItem['href']; ?>" data-target="item<?php echo $i, '-', $j; ?>" class="subNavItem">
+                            <span class="glyphicon glyphicon-certificate"></span>
+                            <?php echo $subItem['title']; ?>
+                        </a>
+                        <?php } ?>
+
+                    </div>
+                </li>
+                <?php } ?>
+            </ol>
+        </aside>
+        <div class="mainRight">
+            <div class="row rightNav">
+                <div class="col-xs-12">
+                    <ul id="rightNav" class="nav nav-tabs" role="tabList">
+                        <li role="presentation" class="active">
+                            <a href="#home" role="tab">首页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                    home
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{ /block }}
+
+{{ block "script" }}
+    Manage.backgroundColor('f5');
+    Manage.panel();
+{{ /block }}
