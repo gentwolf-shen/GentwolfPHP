@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AA</title>
+    <title><?php echo $this->action['title']; ?></title>
     <link rel="stylesheet" href="/assets/libraries/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/manage/css/default.css">
     <link rel="stylesheet" href="/assets/css/gentwolf.css">
@@ -30,7 +30,15 @@
         </div>
         <div class="col-sm-2 text-right">
             <?php if (isset($this->action['eventName'])) { ?>
-                <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right"><?php echo $this->action['eventName']; ?></a>
+                <?php if ($this->action['eventHref'] == 'BACK') { ?>
+                    <a role="button" type="button" class="btn btn-primary text-right btnBack">
+                        <?php echo $this->action['eventName']; ?>
+                    </a>
+                <?php } else { ?>
+                    <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right">
+                        <?php echo $this->action['eventName']; ?>
+                    </a>
+                <?php } ?>
             <?php } ?>
         </div>
     </div>
@@ -49,7 +57,7 @@
 
         <div class="form-group">
             <div class="col-xs-10 col-xs-offset-2">
-                <input type="button" id="btnBack" class="btn btn-warning" value="返回" />
+                <input type="button" id="btnBack" class="btn btn-warning btnBack" value="返回" />
                 &nbsp; &nbsp;
                 <input type="button" id="btnSave" class="btn btn-primary" value="保存" />
             </div>
@@ -67,7 +75,7 @@
 <script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
 <script src="/assets/manage/js/Manage.js"></script>
 <script type="text/javascript">
-    var SITEURL = '?manage/';
+    var SITEURL = '<?php echo gentwolf\Gentwolf::url()?>';
     $(function(){
         Manage.Table.edit(<?php echo $this->data; ?>);
 

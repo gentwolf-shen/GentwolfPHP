@@ -21,7 +21,7 @@
 <script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
 <script src="/assets/manage/js/Manage.js"></script>
 <script type="text/javascript">
-    var SITEURL = '?manage/';
+    var SITEURL = '{{ echo gentwolf\Gentwolf::url()}}';
     $(function(){
         {{ block "script" }}
 

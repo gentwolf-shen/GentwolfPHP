@@ -81,8 +81,16 @@ Manage.panel = function(){
             //添加panel
             addPanel(target, cur);
         } else {
-            //切换tab
-            $('#tab'+ target).find('a').click();
+            var tab = $('#tab'+ target),
+                span = tab.find('span'),
+                a = tab.find('a').get(0);
+            if (span.is(':hidden')) {
+                //切换tab
+                a.click();
+            } else {
+                //如果是显示状态，则加载默认页
+                $('#'+ target).find('iframe')[0].contentWindow.location.href = SITEURL + cur.attr('data-href');
+            }
         }
     });
 
@@ -236,17 +244,17 @@ Manage.Table = {
             var cur = $(this);
             window.top.Gentwolf.Dialog.showConfirm(cur.attr('data-msg'), function(){
                if ('1' == cur.attr('data-ajax')) {
-                        Gentwolf.Http.get(cur.attr('href'), null, function(rs){
+                    Gentwolf.Http.get(cur.attr('href'), null, function(rs){
                         if (rs.code != 0) {
-                            window.top.Gentwolf.Dialog.showConfirm(rs.msg)
+                            window.top.Gentwolf.Dialog.showConfirm(rs.message)
                         } else {
-                            window.top.window.location.reload();
+                            window.location.reload();
                         }
                     }, function(){
                         window.top.Gentwolf.Dialog.showAlert('网络错误，请与管理员联系！');
                     });
                 } else {
-                    window.location.href = cur.attr('href');
+                    //window.location.href = cur.attr('href');
                 }
             });
         });
@@ -263,7 +271,7 @@ Manage.Table = {
             });
         });
 
-        $('#btnBack').click(function(){
+        $('.btnBack').click(function(){
             window.history.go(-1);
         });
 
@@ -272,9 +280,9 @@ Manage.Table = {
 			var bl = Manage.ValidForm.getStatus(f);
 			if (!bl) return false;
 
-            Gentwolf.Http.post(f.attr('action'), f.serialize(), function(rs){
-                if (rs.status != 0) {
-                    window.top.Gentwolf.Dialog.showAlert(rs.result);
+            Gentwolf.Http.post(f.attr('action'), f.serialize(), function(data){
+                if (data.code != 0) {
+                    window.top.Gentwolf.Dialog.showAlert(data.message);
                 } else {
                     var url = f.attr('data-index'),
                         timer = window.setTimeout(function(){

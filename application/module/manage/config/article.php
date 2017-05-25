@@ -19,13 +19,13 @@ return [
 				'icon' => 'glyphicon glyphicon-edit',
 				'text' => '编辑',
 				'key' => 'id',
-				'url' => '?manage/table/edit/article/{KEY}',
+				'url' => 'table/edit/article/{KEY}',
 				'confirm' => false,
 			],
 			'delete' => [
 				'icon' => 'glyphicon glyphicon-remove',
 				'text' => '删除',
-				'url' => '?manage/table/del/tag/{KEY}',
+				'url' => 'table/del/article/{KEY}',
 				'key' => 'id',
 				'confirm' => [
 					'isAjax' => true,
@@ -83,7 +83,7 @@ return [
 					],
 				],
 			],
-			'category' => [
+			'category_id' => [
 				'name' => '分类',
 				'input' => [
 					'type' => 'category',
@@ -194,4 +194,8 @@ return [
             'add_time' => time()
         ],
 	],
+	'del' => array(
+		'table' => 'article',
+		'key' => 'id',
+	),
 ];

@@ -4,6 +4,7 @@ return array(
     array(
         'title' => '基本信息',
         'icon' => 'cog',
+        'display' => 'block', // block OR none
         'items' => array(
             array(
                 'title' => '分类管理',
@@ -22,7 +23,7 @@ return array(
             ),
         ),
     ),
-
+/*
 	array(
         'title' => '项目2',
         'icon' => 'cog',
@@ -39,4 +40,5 @@ return array(
             ),
         ),
     ),
+*/
 );

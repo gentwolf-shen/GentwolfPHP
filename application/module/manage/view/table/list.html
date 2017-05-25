@@ -1,7 +1,7 @@
 {{ extends "layout/default" }}
 
 {{ block "title"}}
-    <?php echo $this->action['title']; ?>
+    {{ echo $this->action['title']; }}
 {{ /block }}
 
 {{ block "main" }}
@@ -24,7 +24,7 @@
                 <?php foreach ($this->listItems['items'] as $items) { ?>
                     <tr>
                         <?php foreach ($this->headerItems as $key => $item) { ?>
-                            <td <?php echo gentwolf\ViewUtil::attr($item['attr']) ?>><?php echo gentwolf\ViewUtil::field($items[$key], $item) ?></td>
+                            <td <?php echo gentwolf\ViewHelper::attr($item['attr']) ?>><?php echo gentwolf\ViewHelper::field($items[$key], $item) ?></td>
                         <?php } ?>
                         <?php if ($this->actions) { ?>
                             <td class="text-center">

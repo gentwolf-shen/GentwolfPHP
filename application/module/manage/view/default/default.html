@@ -28,25 +28,23 @@
     <div class="main">
         <aside class="mainLeft">
             <ol class="list-group">
-                <?php foreach ($this->items as $i => $item) { ?>
+                {{ foreach ($this->items as $i => $item) { }}
                 <li class="list-group-item">
                     <div class="itemTitle">
                         <span class="glyphicon glyphicon-<?php echo $item['icon']; ?>"></span>
                         <?php echo $item['title']; ?>
                         <span class="caret"></span>
                     </div>
-                    <div class="subNav">
-
-                        <?php foreach ($item['items'] as $j => $subItem) { ?>
-                        <a href="javascript:void(0)" data-href="<?php echo $subItem['href']; ?>" data-target="item<?php echo $i, '-', $j; ?>" class="subNavItem">
+                    <div class="subNav" style="display:{{ echo $item['display']; }}">
+                        {{ foreach ($item['items'] as $j => $subItem) { }}
+                        <a href="javascript:void(0)" data-href="{{ echo $subItem['href']; }}" data-target="item{{ echo $i, '-', $j; }}" class="subNavItem">
                             <span class="glyphicon glyphicon-certificate"></span>
-                            <?php echo $subItem['title']; ?>
+                            {{ echo $subItem['title']; }}
                         </a>
-                        <?php } ?>
-
+                        {{ } }}
                     </div>
                 </li>
-                <?php } ?>
+                {{ } }}
             </ol>
         </aside>
         <div class="mainRight">
@@ -60,14 +58,14 @@
                 </div>
             </div>
 
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                    home
-                </div>
-            </div>
+            <div class="tab-content"></div>
         </div>
     </div>
 
+
+    <div role="tabpanel" class="tab-pane fade in active" id="home">
+        home
+    </div>
 </div>
 
 {{ /block }}

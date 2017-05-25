@@ -13,9 +13,17 @@
             </ol>
         </div>
         <div class="col-sm-2 text-right">
-            <?php if (isset($this->action['eventName'])) { ?>
-                <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right"><?php echo $this->action['eventName']; ?></a>
-            <?php } ?>
+            {{ if (isset($this->action['eventName'])) { }}
+                {{ if ($this->action['eventHref'] == 'BACK') { }}
+                    <a role="button" type="button" class="btn btn-primary text-right btnBack">
+                        {{ echo $this->action['eventName']; }}
+                    </a>
+                {{ } else { }}
+                    <a href="{{ echo gentwolf\Gentwolf::url($this->action['eventHref']); }}" role="button" type="button" class="btn btn-primary text-right">
+                        {{ echo $this->action['eventName']; }}
+                    </a>
+                {{ } }}
+            {{ } }}
         </div>
     </div>
 </div>

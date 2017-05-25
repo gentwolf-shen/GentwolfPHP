@@ -27,16 +27,16 @@ CREATE INDEX idx_category_is_show ON category (is_show);
 CREATE INDEX idx_category_is_nav ON category (is_nav);
 
 CREATE TABLE article (
-  id INTEGER NOT NULL PRIMARY KEY,
-  category_id INTEGER NOT NULL DEFAULT 0,
+  id INTEGER PRIMARY KEY,
+  category_id INTEGER DEFAULT 0,
   title VARCHAR(200) NOT NULL DEFAULT '',
   keywords VARCHAR(200) NOT NULL DEFAULT '',
-  description VARCHAR(2555) NOT NULL DEFAULT '',
+  description VARCHAR(1000) NOT NULL DEFAULT '',
   is_show INTEGER  NOT NULL DEFAULT 0,
   content TEXT NOT NULL,
-  add_time INTEGER NOT NULL DEFAULT 0,
-  edit_time INTEGER NOT NULL DEFAULT 0,
-  tags VARCHAR(255) NOT NULL DEFAULT ''
+  add_time INTEGER DEFAULT 0,
+  edit_time INTEGER DEFAULT 0,
+  tags VARCHAR(255) DEFAULT ''
 );
 CREATE INDEX idx_article_category_id ON article (category_id);
 CREATE INDEX idx_article_is_show ON article (is_show);

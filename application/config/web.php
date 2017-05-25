@@ -15,6 +15,6 @@ return [
 	'view' => [
 		'ext' => '.html',
 		'cacheTime' => 5,
-		'cachePath' => '../application/runtime/view/manage/',
+		'cachePath' => '../application/runtime/view/',
 	],
 ];

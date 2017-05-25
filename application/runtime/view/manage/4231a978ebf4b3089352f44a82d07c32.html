@@ -30,7 +30,15 @@
         </div>
         <div class="col-sm-2 text-right">
             <?php if (isset($this->action['eventName'])) { ?>
-                <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right"><?php echo $this->action['eventName']; ?></a>
+                <?php if ($this->action['eventHref'] == 'BACK') { ?>
+                    <a role="button" type="button" class="btn btn-primary text-right btnBack">
+                        <?php echo $this->action['eventName']; ?>
+                    </a>
+                <?php } else { ?>
+                    <a href="<?php echo gentwolf\Gentwolf::url($this->action['eventHref']); ?>" role="button" type="button" class="btn btn-primary text-right">
+                        <?php echo $this->action['eventName']; ?>
+                    </a>
+                <?php } ?>
             <?php } ?>
         </div>
     </div>
@@ -52,7 +60,7 @@
                 <?php foreach ($this->listItems['items'] as $items) { ?>
                     <tr>
                         <?php foreach ($this->headerItems as $key => $item) { ?>
-                            <td <?php echo gentwolf\ViewUtil::attr($item['attr']) ?>><?php echo gentwolf\ViewUtil::field($items[$key], $item) ?></td>
+                            <td <?php echo gentwolf\ViewHelper::attr($item['attr']) ?>><?php echo gentwolf\ViewHelper::field($items[$key], $item) ?></td>
                         <?php } ?>
                         <?php if ($this->actions) { ?>
                             <td class="text-center">
@@ -83,7 +91,7 @@
 <script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
 <script src="/assets/manage/js/Manage.js"></script>
 <script type="text/javascript">
-    var SITEURL = '?manage/';
+    var SITEURL = '<?php echo gentwolf\Gentwolf::url()?>';
     $(function(){
         Manage.Table.list();
 

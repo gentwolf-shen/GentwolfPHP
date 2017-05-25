@@ -106,6 +106,13 @@ final class Gentwolf {
 
 			self::$segments = array_slice($segments, 3);
 		}
+
+		if (!self::config('rewrite')) {
+			self::$urlPrefix = '?';
+		}
+		if (self::$module != 'default') {
+			self::$urlPrefix .= self::$module .'/';
+		}
 	}
 
 	private static function dispatch() {
@@ -130,16 +137,30 @@ final class Gentwolf {
 		}
 	}
 
-	// 默认的配置文件
+	/**
+	 * 加载系统配置文件
+	 * @param string|null $key
+	 * @return array|null
+	 */
 	public static function config($key = null) {
 		if (self::$config == null) {
-			self::$config = require_once self::$modulePath . self::$module .'/config/web.php';
+			$filename = self::$modulePath . self::$module .'/config/web.php';
+			if (!is_file($filename)) {
+				$filename = self::$modulePath . '../config/web.php';
+			}
+			self::$config = require_once $filename;
 		}
 
 		return $key == null ? self::$config : (isset(self::$config[$key]) ? self::$config[$key] : null);
 	}
 
-	// 用户的配置文件
+	/**
+	 * 加载用户的配置文件
+	 * @param string $name 配置文件名(不包含后缀)
+	 * @param string|null $key 节点名
+	 * @return array|null
+	 * @throws Exception
+	 */
 	public static function loadConfig($name, $key = null) {
 		$config = isset(self::$userConfig[$name]) ? self::$userConfig[$name] : null;
 
@@ -156,14 +177,17 @@ final class Gentwolf {
 			$config = require_once $filename;
 			self::$userConfig[$name] = $config;
 		}
+
 		return $key === null ? $config : (isset($config[$key]) ? $config[$key] : null);
 	}
 
-	public static function url($str) {
-		if (self::config('rewrite')) {
-			$str = str_replace('?', '&', $str);
-		}
-
+	/**
+	 * 生成链接
+	 * @param string | array $query
+	 * @return string
+	 */
+	public static function url($query = '') {
+		$str = is_array($query) ? http_build_query($query) : $query;
 		return self::$urlPrefix . $str;
 	}
 }

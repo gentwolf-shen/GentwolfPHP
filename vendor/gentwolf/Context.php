@@ -70,10 +70,16 @@ class Context {
 	}
 
 	public static function jsonSuccess($msg = 'success') {
-		$data = [
-			'code' => 0,
-			'message' => $msg,
-		];
+		$data = null;
+		if (is_scalar($msg)) {
+			$data = [
+				'code' => 0,
+				'message' => $msg,
+			];
+		} else {
+			$data = $msg;
+		}
+
 		self::writeJSON($data, 200);
 	}
 
@@ -82,7 +88,7 @@ class Context {
 			'code' => 5000000,
 			'message' => $msg,
 		];
-		self::writeJSON($data, 5000000);
+		self::writeJSON($data, 500);
 	}
 
 	/**

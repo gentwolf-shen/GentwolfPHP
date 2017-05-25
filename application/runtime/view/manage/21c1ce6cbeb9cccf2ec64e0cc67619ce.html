@@ -42,15 +42,13 @@
                         <?php echo $item['title']; ?>
                         <span class="caret"></span>
                     </div>
-                    <div class="subNav">
-
+                    <div class="subNav" style="display:<?php echo $item['display']; ?>">
                         <?php foreach ($item['items'] as $j => $subItem) { ?>
                         <a href="javascript:void(0)" data-href="<?php echo $subItem['href']; ?>" data-target="item<?php echo $i, '-', $j; ?>" class="subNavItem">
                             <span class="glyphicon glyphicon-certificate"></span>
                             <?php echo $subItem['title']; ?>
                         </a>
                         <?php } ?>
-
                     </div>
                 </li>
                 <?php } ?>
@@ -67,14 +65,14 @@
                 </div>
             </div>
 
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                    home
-                </div>
-            </div>
+            <div class="tab-content"></div>
         </div>
     </div>
 
+
+    <div role="tabpanel" class="tab-pane fade in active" id="home">
+        home
+    </div>
 </div>
 </div>
 
@@ -83,7 +81,7 @@
 <script src="/assets/libraries/gentwolf/Gentwolf.js"></script>
 <script src="/assets/manage/js/Manage.js"></script>
 <script type="text/javascript">
-    var SITEURL = '?manage/';
+    var SITEURL = '<?php echo gentwolf\Gentwolf::url()?>';
     $(function(){
         Manage.backgroundColor('f5');
     Manage.panel();

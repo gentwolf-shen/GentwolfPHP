@@ -6,14 +6,14 @@ use gentwolf\Gentwolf;
 use gentwolf\Controller;
 use gentwolf\Context;
 use gentwolf\Pagination;
-use gentwolf\DatabaseUtil;
+use gentwolf\DatabaseHelper;
 use manage\model\TableModel;
 
 Class TableController extends Controller {
     /**
      * 加载配置文件
-     * @param $m
-     * @return null|array
+     * @param string $table
+     * @return array
      * @throws Exception
      */
     private function loadConfig($table) {
@@ -40,14 +40,14 @@ Class TableController extends Controller {
             'count' => $listItems['count'],
             'page' => $page,
             'size' => $size,
-            'url' => '?manage/table/list/'. $table .'/{page}',
+            'url' => 'table/list/'. $table .'/{page}',
         ));
 
         $action = array(
             'title'        => $header['title'],
             'subTitle'    => $header['listTitle'],
             'eventName'    => $header['addTitle'],
-            'eventHref'    => '?manage/table/edit/'. $table .'/0',
+            'eventHref'    => 'table/edit/'. $table .'/0',
         );
 
         $this->render($config['list']['view'], array(
@@ -67,7 +67,9 @@ Class TableController extends Controller {
 
         $action = array(
             'title'     => $header['title'],
-            'subTitle'  => $header['addTitle']
+            'subTitle'  => $header['addTitle'],
+			'eventName'    => '返回',
+			'eventHref'    => 'BACK',
         );
 
         $configEdit = $config['edit'];
@@ -112,14 +114,14 @@ Class TableController extends Controller {
                     $data[$name] = $value;
                 }
             }
-            $id = DatabaseUtil::add($config['edit']['table'], $data);
+            $id = DatabaseHelper::add($config['edit']['table'], $data);
         } else {
-            DatabaseUtil::update($config['edit']['table'], $data, array(
+			DatabaseHelper::update($config['edit']['table'], $data, array(
                 $config['edit']['key'] => $value,
             ));
         }
 
-        Context::succeed($id);
+        Context::jsonSuccess($id);
     }
 
     public function delAction($args) {
@@ -131,11 +133,11 @@ Class TableController extends Controller {
         $config = $this->loadConfig($table);
         $delConfig = $config['del'];
 
-        $count = DatabaseUtil::delete($delConfig['table'], [
+        $count = DatabaseHelper::delete($delConfig['table'], [
             $delConfig['key'] => $value,
         ]);
         if ($count > 0) {
-            Context::succeed('OK');
+            Context::jsonSuccess();
         } else {
             Context::error('删除失败');
         }

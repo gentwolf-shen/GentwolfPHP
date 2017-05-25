@@ -8,10 +8,15 @@ class View {
     private $config = array();
     public $params = [];
     private $viewPath = '';
+    private $cachePath = '';
 
     function __construct($config) {
 		$this->config = $config;
     	$this->viewPath = gentwolf::$modulePath . gentwolf::$module .'/view/';
+    	$this->cachePath = $config['cachePath'] . gentwolf::$module .'/';
+    	if (!is_dir($this->cachePath)) {
+    		@mkdir($this->cachePath);
+		}
     }
 
     /*
@@ -29,11 +34,11 @@ class View {
 	 * 清除缓存
 	 */
     public function clear() {
-    	$items = @scandir($this->config['cachePath']);
+    	$items = @scandir($this->cachePath);
     	if ($items) {
     		foreach ($items as $item) {
     			if ($item == '.' || $item == '..') continue;
-    			unlink($this->config['cachePath'] . $item);
+    			unlink($this->cachePath . $item);
 			}
 		}
 	}
@@ -116,7 +121,7 @@ class View {
      * @return string view cache filename
      */
     private function compileTpl($tpl) {
-		$filename = $this->config['cachePath'] . md5($tpl) . $this->config['ext'];
+		$filename = $this->cachePath . md5($tpl) . $this->config['ext'];
 
 		if (!is_file($filename) || filemtime($filename) < time() - $this->config['cacheTime']) {
 			$con = $this->fetchPartial($tpl);
