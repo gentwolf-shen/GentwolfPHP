@@ -14,6 +14,15 @@ a {
   width: 360px;
   margin: 10% auto;
 }
+#loginPanel #code {
+  width: 190px;
+  float: left;
+}
+#loginPanel #captcha {
+  float: right;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .strong {
   font-weight: bold;
 }

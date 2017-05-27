@@ -11,8 +11,12 @@ class DefaultController extends Controller {
 		PassportModel::hasRight();
 
 		$this->render('default/default', [
-			'user' => 'admin',
+			'user' => PassportModel::getUser(),
             'items' => Gentwolf::loadConfig('leftNav'),
         ]);
+	}
+
+	public function welcomeAction() {
+		$this->render('default/welcome');
 	}
 }

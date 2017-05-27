@@ -22,7 +22,7 @@
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <span class="glyphicon glyphicon-user"></span>
-                    <?php echo $this->user ?>
+                    <?php echo $this->user->username ?>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
@@ -58,20 +58,14 @@
             <div class="row rightNav">
                 <div class="col-xs-12">
                     <ul id="rightNav" class="nav nav-tabs" role="tabList">
-                        <li role="presentation" class="active">
-                            <a href="#home" role="tab">首页</a>
-                        </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="tab-content"></div>
+            <div class="tab-content">
+
+            </div>
         </div>
-    </div>
-
-
-    <div role="tabpanel" class="tab-pane fade in active" id="home">
-        home
     </div>
 </div>
 </div>

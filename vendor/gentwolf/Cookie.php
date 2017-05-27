@@ -23,6 +23,7 @@ class Cookie {
 		foreach ($args as $key) {
 			self::set($key, '', -86400);	
 		}
+		return true;
 	}
 
 	public static function all() {

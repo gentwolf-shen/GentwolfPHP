@@ -2,9 +2,9 @@
 
 namespace manage\controller;
 
+use gentwolf\Captcha;
 use gentwolf\Context;
 use gentwolf\Controller;
-use gentwolf\Util;
 use manage\model\PassportModel;
 
 class PassportController extends Controller {
@@ -16,6 +16,13 @@ class PassportController extends Controller {
 		if (Context::isPost()) {
 			$username = Context::postStr('username');
 			$password = Context::postStr('password');
+			$code = Context::postStr('code');
+
+			if (!Captcha::verify($code)) {
+				//Context::jsonError('验证码错误！');
+			} else {
+				Captcha::clear();
+			}
 
 			$bl = PassportModel::login($username, $password);
 			if ($bl) {

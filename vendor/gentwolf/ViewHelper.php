@@ -201,14 +201,7 @@ class ViewHelper {
                     $arr = Gentwolf::loadConfig($callback['name'], $callback['key']);
                     $text = $arr[$text];
                 } else if ('function' == $callback['type']) {
-                    $params = explode(',', $callback['params']);
-                    foreach ($params as &$value) {
-                        $value = trim($value);
-                        if ('{VALUE}' == $value) {
-                            $value = $text;
-                        }
-                    }
-                    $text = call_user_func_array($callback['name'], $params);
+                    $text = call_user_func($callback['name'], $text);
                 }
             }
         }

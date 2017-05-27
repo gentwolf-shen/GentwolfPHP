@@ -9,7 +9,7 @@ return [
 	],
 	'list' => [
 		'query' => [
-			'field' => 'id,title',
+			'field' => 'id,title,add_time AS addTime,is_show AS isShow',
 			'table' => 'article',
 			'where' => false,
 			'order' => 'id DESC'
@@ -53,14 +53,32 @@ return [
 				'callback' => false,
 			],
 
-			/*'addTime' => [
+			'addTime' => [
 				'name' => '添加时间',
 				'width' => '',
 				'attr' => [
 					'class' => 'text-center',
 				],
-				'callback' => false,
-			],*/
+				'callback' => [
+					'type' => 'function',
+					'name' => function($addTime){
+						return date('Y-m-d h:i:s', $addTime);
+					},
+				],
+			],
+
+			'isShow' => [
+				'name' => '是否上线',
+				'width' => '',
+				'attr' => [
+					'class' => 'text-center',
+				],
+				'callback' => [
+					'type' => 'config',
+					'name' => 'dict',
+					'key' => 'bool',
+				],
+			],
 		],
 	],
 	'edit' => [

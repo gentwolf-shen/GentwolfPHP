@@ -27,6 +27,12 @@ Manage.login = function(){
 			$('#btnLogin').click();
 		}
 	});
+	$('#captcha').click(function(){
+        var cur = $(this),
+            url = cur.attr('src').split('?t=')[0];
+        cur.attr('src', url +'?t='+ (new Date()).getTime());
+    });
+
     $('#btnLogin').click(function(){
         Gentwolf.Loading.show();
         Gentwolf.Http.post(SITEURL +'passport/login', $('#loginForm').serialize(), function(rs){
@@ -79,7 +85,7 @@ Manage.panel = function(){
             target = cur.attr('data-target');
         if (0 == $('#'+ target).length) {
             //添加panel
-            addPanel(target, cur);
+            addPanel(target, cur.attr('data-href'), cur.text(), true);
         } else {
             var tab = $('#tab'+ target),
                 span = tab.find('span'),
@@ -94,19 +100,19 @@ Manage.panel = function(){
         }
     });
 
-    function addPanel(target, cur){
-        var src = SITEURL + cur.attr('data-href');
+    function addPanel(target, href, text, bl){
         var panel = '<div role="tabpanel" class="tab-pane fade" id="'+ target +'">'+
-            '<iframe class="iframe" src="'+ src +'" />'+
+            '<iframe class="iframe" src="'+ SITEURL + href +'" />'+
             '</div>';
         $('.tab-content').append(panel);
         changeIframeHeight();
 
         //添加tab
-        var tab = $('<li role="presentation" id="tab'+ target +'">'+
-            '<a href="#'+ target +'" role="tab">'+ cur.text() +'</a>'+
-            '<span class="tabClose glyphicon glyphicon-remove"></span>'+
-            '</li>');
+        var tmp = '<li role="presentation" id="tab'+ target +'">'+
+            '<a href="#'+ target +'" role="tab">'+ text +'</a>';
+        if (bl) tmp += '<span class="tabClose glyphicon glyphicon-remove"></span>';
+        tmp += '</li>';
+        var tab = $(tmp);
         $('#rightNav').append(tab);
         tab.find('a').click();
 
@@ -123,6 +129,8 @@ Manage.panel = function(){
     document.body.onresize = function(){
         changeIframeHeight();
     };
+
+    addPanel('item', 'default/welcome', '首页', false);
 
     function changeIframeHeight() {
         var topHeight = $('.topNav').height()

@@ -2,6 +2,7 @@
 
 return [
 	'mode' => 'debug', // any others: pro etc.
+	'key' => '8c8660c8e933debbc97717c075fbc1c4',
 	'rewrite' => false,
 	'database' => [
 		'default' => [

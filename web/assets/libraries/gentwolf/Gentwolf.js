@@ -192,7 +192,7 @@ Gentwolf.Dialog = {
             btns: ['OK'],
             confirmCallback: function(){
                 if (okCallback) okCallback();
-            },
+            }
         });
     },
     showConfirm: function(msg, okCallback, cancelCallback) {
