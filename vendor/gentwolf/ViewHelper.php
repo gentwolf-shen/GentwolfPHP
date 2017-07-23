@@ -11,6 +11,7 @@ class ViewHelper {
         switch ($type) {
             case 'text':
             case 'number':
+			case 'password':
             case 'date':
                 $html = self::text($name, $value, $options, $type);
                 break;
