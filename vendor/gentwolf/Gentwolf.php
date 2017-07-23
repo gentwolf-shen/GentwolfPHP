@@ -22,6 +22,7 @@ final class Gentwolf {
 	public static $module;
 	public static $controller;
 	public static $action;
+	private static $defaultModule = 'site';
 
 	public static $segments;
 	public static $urlPrefix;
@@ -78,7 +79,7 @@ final class Gentwolf {
 		}
 
 		if (empty($uri)) {
-			self::$module = 'site';
+			self::$module = self::$defaultModule;
 			self::$controller = 'Default';
 			self::$action = 'default';
 		} else {
@@ -87,7 +88,7 @@ final class Gentwolf {
 
 			$segments = explode('/', $uri);
 			if (!is_dir(self::$modulePath . $segments[0])) {
-				array_unshift($segments, 'site');
+				array_unshift($segments, self::$defaultModule);
 			}
 
 			switch (count($segments)) {
@@ -110,7 +111,7 @@ final class Gentwolf {
 		if (!self::config('rewrite')) {
 			self::$urlPrefix = '?';
 		}
-		if (self::$module != 'default') {
+		if (self::$module != self::$defaultModule) {
 			self::$urlPrefix .= self::$module .'/';
 		}
 	}
@@ -188,6 +189,7 @@ final class Gentwolf {
 	 */
 	public static function url($query = '') {
 		$str = is_array($query) ? http_build_query($query) : $query;
-		return self::$urlPrefix . $str;
+		$url = self::$urlPrefix . $str;
+		return $url != '?' ? $url : '';
 	}
 }
