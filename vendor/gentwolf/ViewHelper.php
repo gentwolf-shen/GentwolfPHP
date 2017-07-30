@@ -104,11 +104,7 @@ class ViewHelper {
      * @return bool|string
      */
     private static function getCategory($parentId) {
-        $rows = SqlBuilder::instance()->select('id,name,parent_id AS pId')
-            ->from('category')
-            ->where(array('top_id' => $parentId))
-            ->orderBy('show_order', 'DESC')
-            ->fetchAll();
+        $rows = DatabaseHelper::fetchAll('category', 'id,name,parent_id AS pId', ['top_id' => $parentId], ' ORDER BY show_order DESC');
         return $rows ? self::createOption($rows, $parentId) : false;
     }
 
@@ -122,8 +118,8 @@ class ViewHelper {
     private static function createOption(&$rows, $parentId = 0, $indent = '|－') {
         $rs = false;
         foreach ($rows as $k => $v) {
+            $rs[] = '<option value="'. $v['id'] .'">'. $indent . $v['name'] .'</option>';
             if ($parentId == $v['pId']) {
-                $rs[] = '<option value="'. $v['id'] .'">'. $indent . $v['name'] .'</option>';
                 unset($rows[$k]);
                 $rs[] = self::createOption($rows, $v['id'], $indent . '－');
             }

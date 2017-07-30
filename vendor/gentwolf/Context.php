@@ -28,7 +28,7 @@ class Context {
 	}
 
 	public static function getClientIP() {
-		return '';
+		return self::server('REMOTE_ADDR');
 	}
 
 	public static function server($name, $default = '') {
