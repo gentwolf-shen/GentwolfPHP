@@ -168,7 +168,7 @@ final class Gentwolf {
 		if ($config === null) {
 			$filename = self::$modulePath . self::$module .'/config/'. $name .'.php';
 			if (!is_file($filename)) {
-				$filename = self::$appPath .'/config/'. $name .'.php';
+				$filename = self::$appPath .'config/'. $name .'.php';
 			}
 
 			if (!is_file($filename)) {
