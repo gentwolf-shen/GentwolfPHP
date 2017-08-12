@@ -24,6 +24,11 @@ class Controller {
 		return $this->view->fetch($tplName, $data);
 	}
 
+	protected function assign($name, $data = null) {
+		$this->initView();
+		return $this->view->assign($name, $data);
+	}
+
 	protected function clearView() {
 		$this->initView();
 		$this->view->clear();

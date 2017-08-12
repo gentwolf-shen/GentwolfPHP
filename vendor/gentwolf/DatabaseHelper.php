@@ -43,7 +43,8 @@ class DatabaseHelper {
 
 	public static function fetchScalar($table, $field, $where, $ext = null, $dbConfig = 'default') {
 		$rows = self::fetchAll($table, $field, $where, $ext, $dbConfig);
-		return count($rows) > 0 ? $rows[0][$field] : null;
+		$row = count($rows) > 0 ? $rows[0] : null;
+		return is_array($row) ? $row[$field] : $row;
 	}
 
 	/**
