@@ -110,6 +110,8 @@ final class Gentwolf {
 
 		if (!self::config('rewrite')) {
 			self::$urlPrefix = '?';
+		} else {
+			self::$urlPrefix = '/';
 		}
 		if (self::$module != self::$defaultModule) {
 			self::$urlPrefix .= self::$module .'/';
@@ -184,12 +186,16 @@ final class Gentwolf {
 
 	/**
 	 * 生成链接
+	 * @param string controller/action
 	 * @param string | array $query
 	 * @return string
 	 */
-	public static function url($query = '') {
-		$str = is_array($query) ? http_build_query($query) : $query;
-		$url = self::$urlPrefix . $str;
-		return $url != '?' ? $url : '';
+	public static function url($path, $query = '') {
+		$url = self::$urlPrefix . $path;
+		if ($query) {
+			$str = is_array($query) ? http_build_query($query) : $query;
+			$url .= (Gentwolf::config('rewrite') ? '?' : '&') . $str;
+		}
+		return $url;
 	}
 }
