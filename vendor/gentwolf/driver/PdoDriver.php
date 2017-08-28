@@ -66,15 +66,15 @@ class PdoDriver {
 
 	public function beginTrans() {
 		$this->openConn();
-		$this->Link->beginTransaction();
+		$this->link->beginTransaction();
 	}
 
 	public function commit() {
-		$this->Link->commit();
+		$this->link->commit();
 	}
 
 	public function rollBack() {
-		$this->Link->rollBack();
+		$this->link->rollBack();
 	}
 
 	public function execute($sql, $fetchStyle = PDO::FETCH_ASSOC) {
